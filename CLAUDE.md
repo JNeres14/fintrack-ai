@@ -1,15 +1,18 @@
+@AGENTS.md
+@STATUS.md
+
 # FinTrack AI
 
 Gerenciador financeiro pessoal (web + PWA). O usuário envia imagens de comprovantes, a IA extrai as transações, o usuário revisa e confirma. Uso pessoal hoje, arquitetura pronta para múltiplos usuários.
 
-Referência principal: `docs/` (documento técnico inicial com requisitos RF/RNF, casos de uso, arquitetura, modelo ER, módulo de IA, segurança e roadmap). Em dúvida, o documento vence; se achar que ele está errado, pare e pergunte antes de divergir.
+Escopo e fases: `SPEC.md` e a spec da fase atual em `specs/` (Fase 2: `specs/SPEC-fase-2.md`). Requisitos e referência principal: `docs/` (documento técnico inicial com requisitos RF/RNF, casos de uso, arquitetura, modelo ER, módulo de IA, segurança e roadmap). Em dúvida, o documento vence; se achar que ele está errado, pare e pergunte antes de divergir.
 
 ## Stack
 
-- Backend: Java + Spring Boot (monólito modular), Spring Security, PostgreSQL, Flyway
+- Backend: Java 25 + Spring Boot 4.1.2 (monólito modular), Spring Security, PostgreSQL 17, Flyway, Maven Wrapper
 - Frontend: React + TypeScript + Tailwind + Vite PWA
 - Testes: JUnit + Mockito (backend), Vitest (frontend)
-- Infra: Docker/Docker Compose, GitHub Actions, Prometheus + Grafana
+- Infra: Docker/Docker Compose, GitHub Actions, Prometheus + Grafana (só depois da Fase 2: semanas 7 a 10 e Fase 6)
 
 ## Estrutura
 
@@ -19,6 +22,8 @@ fintrack-ai/
 ├── backend/            pacote base: com.fintrack
 ├── infrastructure/     docker/ e monitoring/
 ├── docs/               architecture (ADRs), requirements, database, api
+├── specs/              spec de cada fase
+├── prompts/            prompts de cada fase
 ├── scripts/
 └── .github/workflows/
 ```
@@ -47,14 +52,15 @@ Módulos do backend: `auth, user, transaction, category, budget, goal, dashboard
 
 ## Como trabalhar
 
-- **Uma tarefa pequena por vez.** Ciclo: implementar → rodar testes → revisar código e segurança → commit. Não construir várias fases de uma vez.
+- **Uma tarefa pequena por vez.** Ciclo: implementar → rodar testes → revisar código e segurança → pedir minha revisão (sem commit). Não construir várias fases de uma vez.
 - Antes de codar algo novo, mostrar um plano curto (arquivos que serão criados/alterados) e esperar confirmação quando a tarefa for maior que um módulo.
 - Escrever testes junto com o código; não considerar a tarefa pronta com testes falhando.
 - Rodar a verificação real antes de dizer que terminou (build e testes) e informar o resultado, inclusive falhas.
-- Commits pequenos, mensagens no imperativo e em português (ex.: `Adiciona autenticação com JWT`). Nunca commitar segredos nem fazer push sem eu pedir.
+- **Não fazer commit nem push.** Ao fim de cada bloco, listar os arquivos alterados e sugerir a mensagem de commit (imperativo, em português; ex.: `Adiciona autenticação com JWT`); eu reviso e commito. Nunca incluir segredos.
 - Decisão arquitetural nova ou que muda o documento: registrar um ADR em `docs/architecture/`.
 - Não adicionar funcionalidades fora do escopo (Open Finance, app nativo, investimentos, microsserviços, Kubernetes).
 - Dúvida de requisito: perguntar, não inventar.
+- Modo aprendizado, versões e tecnologias permitidas/proibidas: ver `AGENTS.md`; valem acima de qualquer prompt de fase.
 
 ## Comandos
 
@@ -64,10 +70,8 @@ Verificados na Fase 1 (JDK 25 em `JAVA_HOME`; o Maven vem pelo wrapper):
 # Backend: build e testes (a partir de backend/)
 ./mvnw -B verify
 
-# Banco de desenvolvimento (a partir da raiz; exige .env copiado de .env.example e preenchido)
-docker compose --env-file .env -f infrastructure/docker/docker-compose.yml up -d
-docker compose --env-file .env -f infrastructure/docker/docker-compose.yml ps   # esperar (healthy)
-docker compose --env-file .env -f infrastructure/docker/docker-compose.yml down
+# Banco: PostgreSQL 17 local (Windows), bancos fintrack e fintrack_test; conexão pelas variáveis do .env (Fase 2).
+# O Compose da Fase 1 fica em infrastructure/docker/, mas não é usado até as semanas 7 e 8 do PLANO.
 ```
 
 Manter esta seção atualizada ao criar cada novo comando.

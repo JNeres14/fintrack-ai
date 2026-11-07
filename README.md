@@ -15,6 +15,7 @@ Gerenciador financeiro pessoal (web responsiva + PWA). O usuário envia imagens 
 - `docs/database/`: modelo de dados
 - `docs/prototypes/`: telas do MVP
 - `docs/ROADMAP.md`: as 7 fases com critérios de aceite
+- `SPEC.md` e `specs/`: escopo geral e spec de cada fase
 - `CLAUDE.md`: regras de trabalho do projeto
 
 ## Status
