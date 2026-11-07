@@ -19,7 +19,7 @@ Gerenciador financeiro pessoal (web responsiva + PWA). O usuário envia imagens 
 - `CLAUDE.md`: regras de trabalho do projeto
 
 ## Status
-Fase 1 (planejamento e estruturação) em andamento. Sem regra de negócio implementada.
+Fase 1 (planejamento e estruturação) concluída. Fase 2 (backend e banco) é a próxima. Sem regra de negócio implementada.
 
 ## Como rodar
 A definir na Fase 2.

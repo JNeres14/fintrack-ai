@@ -1,7 +1,7 @@
 # SPEC — Fase 2: Backend e banco de dados
 
 > Parte do `SPEC.md` (resumo geral). Prompt de execução: `prompts/prompt-fase-2.md`. Requisitos detalhados: `docs/`. Regras de ambiente, tecnologias permitidas e proibidas: `AGENTS.md`.
-> Status: **pronta para executar**, depois que eu aprovar o documento técnico e commitar as specs.
+> Status: **pronta para executar.**
 > Se esta spec e o prompt divergirem, vale esta spec.
 
 ## 1. Objetivo
@@ -12,7 +12,7 @@ Uma API financeira funcional, segura e testada: cadastro e login, contas, catego
 - Backend só com o esqueleto: pacotes vazios dos módulos e um teste de contexto sem banco (DataSource, JPA e Flyway excluídos em `backend/src/test/resources/application.properties`).
 - O CI nunca rodou (não há remoto no GitHub).
 - `.env` local com senha descartável, fora do Git.
-- Fase 1 aguardando minha aprovação do documento técnico (ver `specs/SPEC-fase-1.md`).
+- Fase 1 concluída e aprovada em 07/11/2026 (ver `specs/SPEC-fase-1.md`).
 
 **Antes de começar**
 - PostgreSQL 17 instalado direto no Windows, com um usuário próprio e dois bancos: `fintrack` (desenvolvimento) e `fintrack_test` (testes). Eu instalo e crio; o Code não instala nada na máquina.

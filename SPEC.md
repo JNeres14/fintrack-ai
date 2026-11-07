@@ -57,7 +57,7 @@ Commits: o Code não commita. No fim de cada bloco, sugere os arquivos e a mensa
 Cada fase termina com algo que eu consigo testar.
 | Fase | Entrega | Como testar | Status |
 |---|---|---|---|
-| 1 | Documentação, repositório e esqueleto do backend | `./mvnw -B verify` passa; PostgreSQL do Compose fica `healthy` | [~] feita, aguarda minha aprovação do documento técnico (`specs/SPEC-fase-1.md`) |
+| 1 | Documentação, repositório e esqueleto do backend | `./mvnw -B verify` passa; PostgreSQL do Compose fica `healthy` | [x] concluída e aprovada em 07/11/2026 (`specs/SPEC-fase-1.md`) |
 | 2 | API financeira funcional (`specs/SPEC-fase-2.md`) | Migrações do zero; testes verdes contra o PostgreSQL local; isolamento entre usuários; Swagger no perfil dev | [ ] |
 | 3 | Frontend + dashboard (inclui os endpoints de resumo no backend) | Login, lançamento manual e dashboard no celular e no PC | [ ] |
 | 4 | Lançamento por imagem com IA (inclui `Attachment`, `AIAnalysis` e `attachment_id`) | Print de Pix vira transação só após confirmação; extrato com várias linhas; duplicata sinalizada | [ ] |
@@ -66,7 +66,7 @@ Cada fase termina com algo que eu consigo testar.
 | 7 | Testes de integração e segurança, documentação da API, README, vídeo | Checklist de segurança (`docs/architecture/03-seguranca-e-privacidade.md`) cumprido | [ ] |
 
 ### Specs por fase
-- Fase 1 (feita, aguarda aprovação): `specs/SPEC-fase-1.md`
+- Fase 1 (concluída e aprovada): `specs/SPEC-fase-1.md`
 - Fase 2 (próxima): `specs/SPEC-fase-2.md` (escopo, blocos, decisões, riscos e aceite)
 
 Cada spec de fase é escrita antes de a fase começar e fica como registro quando ela termina. Este arquivo mantém só o resumo geral.
@@ -89,7 +89,7 @@ Detalhados em `docs/requirements/03-requisitos-nao-funcionais.md`. Os do PLANO, 
 - Calendário: o semestre ainda está em andamento; ritmo de poucas horas por semana até as férias (dez/2026).
 
 ## 10. Registro de decisões
-- 2026-11-06: documento técnico inicial criado (aguarda minha aprovação; ROADMAP da Fase 1 segue desmarcado).
+- 2026-11-06: documento técnico inicial criado (aprovado em 07/11/2026).
 - 2026-11-07: Java 25 e Spring Boot 4.1.2 (ADR-008); Maven Wrapper; sem Lombok, DTOs como `record`.
 - 2026-11-07: Fase 2 sem `Attachment`/`attachment_id` (entram na Fase 4); endpoints de dashboard ficam no início da Fase 3.
 - 2026-11-07: o Code não commita; eu revisito e commito (alinhado ao PLANO.md e ao AGENTS.md).
@@ -97,3 +97,4 @@ Detalhados em `docs/requirements/03-requisitos-nao-funcionais.md`. Os do PLANO, 
 - 2026-11-07: Semgrep, Trivy e Dependabot ficam fora da Fase 2 (semanas 9 e 10 do PLANO).
 - 2026-11-07: spec de cada fase em `specs/` (SPEC-fase-1 como registro, SPEC-fase-2 como plano); o SPEC.md fica só com o resumo geral.
 - 2026-11-07: Docker, Compose, Testcontainers e CI ficam fora da Fase 2 (semanas 7 a 10 do PLANO); a Fase 2 usa PostgreSQL 17 instalado no Windows, com os bancos `fintrack` e `fintrack_test`.
+- 2026-11-07: documento técnico aprovado; Fase 1 concluída e marcada no ROADMAP. Dúvidas do documento (API de IA, hospedagem, PDF, moeda) seguem em aberto para a Fase 4.

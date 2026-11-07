@@ -3,12 +3,12 @@
 Sete fases em sequência, com total estimado de 8 a 12 semanas (algumas horas por semana). Cada fase termina com algo que roda e pode ser verificado antes de seguir; a Fase 4 é o diferencial do produto. Fonte: `docs/documento-tecnico.md`, seção 9.
 
 ## Fase 1 · Planejamento
-- [ ] Escopo: requisitos, repositório, arquitetura, modelo de dados, protótipos de tela
-- [ ] Aceite: documento aprovado; README e ADRs iniciais; protótipos das telas principais
+- [x] Escopo: requisitos, repositório, arquitetura, modelo de dados, protótipos de tela (lista de telas, sem desenho)
+- [x] Aceite: documento aprovado (07/11/2026); README e ADRs iniciais; telas principais listadas
 
 ## Fase 2 · Backend e banco
 - [ ] Escopo: Spring Boot, PostgreSQL + Flyway, entidades, API REST, autenticação e autorização, testes
-- [ ] Aceite: migrações rodam do zero; CRUD de transações pela API; teste de isolamento entre usuários passa; CI verde
+- [ ] Aceite: migrações rodam do zero; CRUD de transações pela API; teste de isolamento entre usuários passa; suíte verde localmente (CI fica para as semanas 9 e 10 do PLANO)
 
 ## Fase 3 · Frontend e dashboard
 - [ ] Escopo: React + TypeScript, interface responsiva, dashboard, histórico, filtros, integração

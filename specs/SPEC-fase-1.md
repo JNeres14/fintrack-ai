@@ -1,7 +1,7 @@
 # SPEC — Fase 1: Planejamento e estruturação
 
 > Registro da fase concluída. Parte do `SPEC.md` (resumo geral). Executada em 06 e 07/11/2026 pelo Claude Code (Sonnet 5.5), a partir de `prompts/prompt-fase-1.md`.
-> Status: **feita, aguardando minha aprovação do documento técnico** (critério de aceite do ROADMAP). Os checkboxes da Fase 1 em `docs/ROADMAP.md` seguem desmarcados até lá.
+> Status: **concluída e aprovada em 07/11/2026** (documento técnico aprovado por mim; checkboxes da Fase 1 marcados em `docs/ROADMAP.md`).
 
 ## 1. Objetivo
 Deixar o repositório estruturado, documentado e pronto para a Fase 2, com tudo versionado em Git. Sem regra de negócio, sem entidades, sem endpoints e sem frontend.
@@ -40,15 +40,13 @@ Deixar o repositório estruturado, documentado e pronto para a Fase 2, com tudo 
 | Compose e CI | Escritos pelo Code | Anterior à regra de modo tutor; são ponto de partida e serão reescritos por mim na Fase 6 |
 
 ## 5. Critérios de aceite (ROADMAP)
-- [ ] Documento técnico aprovado por mim
+- [x] Documento técnico aprovado por mim (07/11/2026)
 - [x] README e ADRs iniciais existem
 - [x] Telas principais listadas (sem protótipo visual)
 
 ## 6. Pendências ao encerrar a Fase 1
-- Eu aprovar o documento técnico e marcar os checkboxes da Fase 1 no ROADMAP.
 - Dúvidas em aberto do documento: API multimodal de IA, hospedagem e armazenamento de imagens, PDF no MVP, moeda única (BRL).
 - Semgrep e Trivy não entraram no CI (ficam para as semanas 9 e 10 do `PLANO.md`).
-- Atualizar o texto "Fase 1 em andamento" do `README.md` ao aprovar.
 
 ## 7. Antes do primeiro push ao GitHub
 Checagens feitas em 07/11/2026 no histórico local: nenhum remoto configurado, o `.env` nunca foi versionado e está protegido pelo `.gitignore`, e não há chaves ou tokens reais no histórico. Repetir a checagem se o histórico mudar antes do push.
