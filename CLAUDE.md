@@ -58,4 +58,16 @@ Módulos do backend: `auth, user, transaction, category, budget, goal, dashboard
 
 ## Comandos
 
-A preencher conforme as fases (build, testes, subir ambiente). Manter esta seção atualizada ao criar cada um.
+Verificados na Fase 1 (JDK 25 em `JAVA_HOME`; o Maven vem pelo wrapper):
+
+```bash
+# Backend: build e testes (a partir de backend/)
+./mvnw -B verify
+
+# Banco de desenvolvimento (a partir da raiz; exige .env copiado de .env.example e preenchido)
+docker compose --env-file .env -f infrastructure/docker/docker-compose.yml up -d
+docker compose --env-file .env -f infrastructure/docker/docker-compose.yml ps   # esperar (healthy)
+docker compose --env-file .env -f infrastructure/docker/docker-compose.yml down
+```
+
+Manter esta seção atualizada ao criar cada novo comando.
