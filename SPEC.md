@@ -82,9 +82,8 @@ Detalhados em `docs/requirements/03-requisitos-nao-funcionais.md`. Os do PLANO, 
 ## 9. Riscos e dúvidas em aberto
 - Compatibilidade do springdoc e da biblioteca de JWT com Spring Boot 4.1.2 e Java 25: verificar nos Blocos B e E.
 - O workflow de CI nunca rodou (não há remoto no GitHub) e fica parado até as semanas 9 e 10 do PLANO.
-- API multimodal de IA, custo por imagem, retenção de dados do provedor: decidir antes da Fase 4.
-- Hospedagem e armazenamento de imagens: decidir antes da Fase 6 (e do armazenamento na Fase 4).
-- PDF no MVP ou só imagem; moeda única: decidir antes da Fase 4.
+- IA, imagens, formatos e moeda: decididos em `specs/SPEC-decisoes-fase-4.md` (extração local por padrão, disco privado, só imagem, só BRL). Pendente na Fase 4: medir acerto com comprovantes reais e definir o prazo de retenção.
+- Hospedagem em nuvem das imagens: decidir só na Fase 6.
 - Aprender versus gerar: se eu não conseguir explicar um arquivo gerado, a fase não está pronta.
 - Calendário: o semestre ainda está em andamento; ritmo de poucas horas por semana até as férias (dez/2026).
 
@@ -98,3 +97,4 @@ Detalhados em `docs/requirements/03-requisitos-nao-funcionais.md`. Os do PLANO, 
 - 2026-11-07: spec de cada fase em `specs/` (SPEC-fase-1 como registro, SPEC-fase-2 como plano); o SPEC.md fica só com o resumo geral.
 - 2026-11-07: Docker, Compose, Testcontainers e CI ficam fora da Fase 2 (semanas 7 a 10 do PLANO); a Fase 2 usa PostgreSQL 17 instalado no Windows, com os bancos `fintrack` e `fintrack_test`.
 - 2026-11-07: documento técnico aprovado; Fase 1 concluída e marcada no ROADMAP. Dúvidas do documento (API de IA, hospedagem, PDF, moeda) seguem em aberto para a Fase 4.
+- 2026-11-09: IA local por padrão (API opcional), imagens em disco privado, PDF fora do MVP, só BRL; ver `specs/SPEC-decisoes-fase-4.md`.
