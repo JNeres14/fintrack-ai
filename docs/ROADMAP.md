@@ -15,7 +15,7 @@ Sete fases em sequência, com total estimado de 8 a 12 semanas (algumas horas po
 - [ ] Aceite: login, lançamento manual e dashboard funcionam no celular e no PC
 
 ## Fase 4 · Integração com IA
-- [ ] Escopo: API multimodal, upload, extração estruturada, revisão, duplicidade
+- [ ] Escopo: API multimodal, upload, extração estruturada, revisão, duplicidade (Decisão de 09/11: extração local por padrão; ver `specs/SPEC-decisoes-fase-4.md`.)
 - [ ] Aceite: print de Pix vira transação só após confirmação; extrato com várias linhas funciona; duplicata é sinalizada
 
 ## Fase 5 · Assistente

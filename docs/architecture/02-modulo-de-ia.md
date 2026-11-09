@@ -39,5 +39,5 @@ A decisão final é sempre do usuário.
 
 **Registro e custo.** Cada chamada gera um `AIAnalysis` com status, modelo, tokens e o JSON validado (sem dados além do necessário), para auditoria, depuração e controle de custo. O provedor de IA fica atrás de uma interface (`VisionExtractor`, `FinancialAdvisor`) para permitir troca futura.
 
-**Pontos a validar na Fase 4:** qual API multimodal usar, custo por imagem, política de retenção de dados do provedor e a taxa real de acerto com comprovantes brasileiros (Pix, extratos, cupons).
+**Pontos a validar na Fase 4:** qual API multimodal usar, custo por imagem, política de retenção de dados do provedor e a taxa real de acerto com comprovantes brasileiros (Pix, extratos, cupons). (Decisão de 09/11: extração local por padrão; ver `specs/SPEC-decisoes-fase-4.md`.)
 

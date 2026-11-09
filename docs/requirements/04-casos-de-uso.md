@@ -18,7 +18,7 @@ O ator principal é o **Usuário** autenticado; a **IA** e o **Armazenamento** s
 
 1. O usuário envia uma imagem (print de Pix, extrato, comprovante ou compra).
 2. O backend valida tipo, tamanho e conteúdo, calcula o hash e verifica se a mesma imagem já foi enviada.
-3. A imagem é guardada em armazenamento privado e enviada à API de IA multimodal.
+3. A imagem é guardada em armazenamento privado e enviada à API de IA multimodal. (Decisão de 09/11: extração local por padrão; ver `specs/SPEC-decisoes-fase-4.md`.)
 4. A IA devolve JSON estruturado (uma ou mais transações); o backend valida campos, tipos e valores.
 5. O backend marca possíveis duplicatas e campos não identificados.
 6. O usuário revisa, edita e confirma cada transação (ou descarta).

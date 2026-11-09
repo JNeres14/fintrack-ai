@@ -1,5 +1,6 @@
 @AGENTS.md
 @STATUS.md
+@PREPARO.md
 
 # FinTrack AI
 

@@ -60,7 +60,7 @@ flowchart LR
 
 **Questões em aberto**
 
-- Qual API multimodal usar (custo por imagem, política de retenção de dados, qualidade com comprovantes brasileiros).
+- Qual API multimodal usar (custo por imagem, política de retenção de dados, qualidade com comprovantes brasileiros). (Decisão de 09/11: extração local por padrão; ver `specs/SPEC-decisoes-fase-4.md`.)
 - Onde hospedar (provedor de nuvem e custo mensal aceitável) e qual armazenamento de imagens (compatível com S3 ou disco privado).
 - PDF entra já no MVP ou apenas imagens?
 - Moeda única (BRL) no MVP, ou suporte a outras moedas?

@@ -25,7 +25,7 @@ Conferido na Fase 1 (07/11/2026). Reconferir com `java -version`, `psql --versio
 - Fase 2, a confirmar com decisão registrada: biblioteca de JWT; springdoc-openapi apenas no perfil `dev`.
 - Frontend (Fase 3): React, TypeScript, Tailwind CSS, Vite PWA, Vitest.
 - Infra: nada na Fase 2. Docker/Compose (semanas 7 e 8), GitHub Actions (semanas 9 e 10), Prometheus e Grafana (Fase 6) entram quando o PLANO chegar lá.
-- IA (Fase 4): uma API multimodal, ainda a definir, sempre atrás das interfaces `VisionExtractor` e `FinancialAdvisor`.
+- IA (Fase 4): extração local por padrão (OCR com regras primeiro, modelo de visão local como plano B). A API multimodal é só opcional, desligada por padrão e ativada por configuração. Tudo atrás das interfaces `VisionExtractor` e `FinancialAdvisor`; ver `specs/SPEC-decisoes-fase-4.md`.
 ## Tecnologias proibidas / fora do escopo
 - Microsserviços, Kubernetes, Kafka.
 - App nativo Android/iOS, Open Finance, sincronização de cartões, controle de investimentos.
@@ -45,3 +45,8 @@ Conferido na Fase 1 (07/11/2026). Reconferir com `java -version`, `psql --versio
 - Se algo permitido não estiver instalado ou não funcionar, parar e avisar em vez de trocar por outra coisa.
 - Toda divergência aprovada vira um ADR (ou nota no STATUS.md).
 - Não alterar `infrastructure/docker/docker-compose.yml` nem `.github/workflows/backend-ci.yml` sem pedir (modo tutor; ver SPEC.md, seção 6).
+
+## Preparo da tarefa
+- Ler PREPARO.md antes de começar (modelo, skills e pastas decididos no chat). Se estiver vazio ou desatualizado, avisar em vez de supor.
+- Se o PREPARO.md mandar usar uma skill que não esteja instalada, parar e avisar.
+- Ao fim da sessão, no STATUS.md, acrescentar: "Skills usadas: X. Não usadas: Y, porque Z."

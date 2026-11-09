@@ -115,7 +115,7 @@ O ator principal é o **Usuário** autenticado; a **IA** e o **Armazenamento** s
 
 1. O usuário envia uma imagem (print de Pix, extrato, comprovante ou compra).
 2. O backend valida tipo, tamanho e conteúdo, calcula o hash e verifica se a mesma imagem já foi enviada.
-3. A imagem é guardada em armazenamento privado e enviada à API de IA multimodal.
+3. A imagem é guardada em armazenamento privado e enviada à API de IA multimodal. (Decisão de 09/11: extração local por padrão; ver `specs/SPEC-decisoes-fase-4.md`.)
 4. A IA devolve JSON estruturado (uma ou mais transações); o backend valida campos, tipos e valores.
 5. O backend marca possíveis duplicatas e campos não identificados.
 6. O usuário revisa, edita e confirma cada transação (ou descarta).
@@ -361,7 +361,7 @@ A decisão final é sempre do usuário.
 
 **Registro e custo.** Cada chamada gera um `AIAnalysis` com status, modelo, tokens e o JSON validado (sem dados além do necessário), para auditoria, depuração e controle de custo. O provedor de IA fica atrás de uma interface (`VisionExtractor`, `FinancialAdvisor`) para permitir troca futura.
 
-**Pontos a validar na Fase 4:** qual API multimodal usar, custo por imagem, política de retenção de dados do provedor e a taxa real de acerto com comprovantes brasileiros (Pix, extratos, cupons).
+**Pontos a validar na Fase 4:** qual API multimodal usar, custo por imagem, política de retenção de dados do provedor e a taxa real de acerto com comprovantes brasileiros (Pix, extratos, cupons). (Decisão de 09/11: extração local por padrão; ver `specs/SPEC-decisoes-fase-4.md`.)
 
 ## 8. Segurança e privacidade
 
@@ -446,7 +446,7 @@ flowchart LR
 
 **Questões em aberto**
 
-- Qual API multimodal usar (custo por imagem, política de retenção de dados, qualidade com comprovantes brasileiros).
+- Qual API multimodal usar (custo por imagem, política de retenção de dados, qualidade com comprovantes brasileiros). (Decisão de 09/11: extração local por padrão; ver `specs/SPEC-decisoes-fase-4.md`.)
 - Onde hospedar (provedor de nuvem e custo mensal aceitável) e qual armazenamento de imagens (compatível com S3 ou disco privado).
 - PDF entra já no MVP ou apenas imagens?
 - Moeda única (BRL) no MVP, ou suporte a outras moedas?
