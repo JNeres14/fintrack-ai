@@ -64,6 +64,21 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return problem;
 	}
 
+	/** As mensagens destas exceções são escritas por nós e não carregam valores financeiros. */
+	@ExceptionHandler(ConflictException.class)
+	ProblemDetail handleConflict(ConflictException ex) {
+		ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
+		problem.setTitle("Conflito");
+		return problem;
+	}
+
+	@ExceptionHandler(BusinessRuleException.class)
+	ProblemDetail handleBusinessRule(BusinessRuleException ex) {
+		ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
+		problem.setTitle("Regra de negócio");
+		return problem;
+	}
+
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	ProblemDetail handleDataIntegrity(DataIntegrityViolationException ex) {
 		log.warn("Violação de integridade no banco: {}", ex.getClass().getSimpleName());

@@ -11,4 +11,6 @@ public interface PaymentMethodRepository extends JpaRepository<PaymentMethod, UU
 	Optional<PaymentMethod> findByIdAndUserId(UUID id, UUID userId);
 
 	List<PaymentMethod> findAllByUserIdOrderByName(UUID userId);
+
+	boolean existsByUserIdAndNameIgnoreCase(UUID userId, String name);
 }

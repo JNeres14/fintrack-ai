@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,8 +15,11 @@ public class UserService {
 
 	private final UserRepository users;
 
-	UserService(UserRepository users) {
+	private final ApplicationEventPublisher events;
+
+	UserService(UserRepository users, ApplicationEventPublisher events) {
 		this.users = users;
+		this.events = events;
 	}
 
 	/** O e-mail é normalizado do mesmo jeito em todo lugar (minúsculas, sem espaços nas pontas). */
@@ -30,7 +34,10 @@ public class UserService {
 
 	@Transactional
 	public UserView create(String email, String passwordHash) {
-		return UserView.from(users.save(new User(email, passwordHash)));
+		User saved = users.save(new User(email, passwordHash));
+		// Síncrono e na mesma transação: os módulos criam seus dados padrão e, se falhar, o cadastro desfaz.
+		events.publishEvent(new UserRegistered(saved.getId()));
+		return UserView.from(saved);
 	}
 
 	@Transactional(readOnly = true)
