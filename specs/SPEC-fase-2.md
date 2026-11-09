@@ -20,13 +20,14 @@ Uma API financeira funcional, segura e testada: cadastro e login, contas, catego
 - Quando o Code atualizar o `.env.example` com as variáveis de conexão e de JWT, eu preencho o meu `.env` (o Code não lê o `.env`).
 
 ## 3. Escopo
-**Entra:** usuários e autenticação, contas, categorias (com subcategorias), formas de pagamento, transações com filtros, orçamentos, testes automatizados, `/health`, OpenAPI no perfil `dev`.
+**Entra:** usuários e autenticação, contas, categorias (com subcategorias), formas de pagamento, transações com filtros, cartão de crédito e fatura (Bloco D2), orçamentos, testes automatizados, `/health`, OpenAPI no perfil `dev`.
 
 **Não entra:**
 - Upload de imagem, `Attachment` (e a coluna `attachment_id` de `Transaction`), `AIAnalysis`, qualquer chamada a IA: Fase 4.
 - `Goal` e `RecurringTransaction`: depois do MVP (P2).
 - Dashboard, relatórios e os endpoints de resumo: início da Fase 3.
 - Frontend.
+- Cashback do cartão: início da Fase 3 (`specs/SPEC-cartao-e-cashback.md`). Juros, multa, rotativo e antecipação de parcelas: fora do MVP.
 - Docker, Docker Compose, Testcontainers e CI/GitHub Actions: semanas 7 a 10 do `PLANO.md`. O Compose e o workflow da Fase 1 ficam parados; o Code não os usa nem altera.
 - Semgrep, Trivy, Dependabot e varredura de segredos no CI: semanas 9 e 10 do `PLANO.md`.
 
@@ -68,12 +69,22 @@ Um bloco por vez. Em cada um: plano curto → meu "ok" → implementação com t
 - Validações: valor positivo com no máximo 2 casas, categoria/conta/forma de pagamento do mesmo usuário, data válida.
 - **Testes:** precisão e arredondamento, filtros combinados, acesso cruzado (inclusive usar categoria de outro usuário).
 
+### Bloco D2 — Cartão de crédito e fatura
+- Detalhes e decisões aprovadas: `specs/SPEC-cartao-e-cashback.md` (seção 2). Entra depois do Bloco D e antes do E.
+- **Antes de implementar:** o Code escreve o ADR 016 (cartão e fatura) com os ajustes listados nessa spec e espera meu "ok".
+- **Pronto quando:** fatura, limite e pagamento de fatura testados (fechamento no dia exato e no dia seguinte, virada de ano, pagamento parcial, acesso cruzado).
+
+
 ### Bloco E — Orçamentos e fechamento (RF-20)
 - Orçamento mensal geral e por categoria; consumo atual calculado no backend (SQL/JPA), nunca no cliente.
 - OpenAPI (springdoc) só no perfil `dev`; confirmar antes a compatibilidade com Spring Boot 4.1.2.
 - CI, Docker e varreduras de segurança: fora desta fase (semanas 7 a 10 do `PLANO.md`).
 - Documentar a API em `docs/api/`, atualizar o `CLAUDE.md` (comandos reais), o `STATUS.md` e o README ("como rodar" a API); sugerir os checkboxes da Fase 2 no ROADMAP (eu confirmo).
 - ADRs das decisões novas da fase (a partir do ADR-009).
+
+### Bloco D3 — Parcelas (opcional)
+- Só depois do Bloco E, se sobrar tempo; senão, início da Fase 3. Detalhes em `specs/SPEC-cartao-e-cashback.md` (seção 3), com o ADR 017.
+
 
 ## 5. Decisões a tomar (o Code propõe, eu aprovo; cada uma vira ADR)
 | Decisão | Proposta inicial |
@@ -108,6 +119,7 @@ Um bloco por vez. Em cada um: plano curto → meu "ok" → implementação com t
 - [ ] `/health` respondendo sem autenticação.
 - [ ] Nenhum segredo no repositório; `.env.example` completo.
 - [ ] README com "como rodar" a API; `docs/api/` e ADRs atualizados.
+- [ ] Bloco D2 (cartão e fatura) testado conforme a spec do cartão. D3 (parcelas) é opcional.
 - [ ] Pendência registrada: CI e Testcontainers entram depois do Docker (semanas 7 a 10 do `PLANO.md`).
 
 ## 9. Como testar ao final

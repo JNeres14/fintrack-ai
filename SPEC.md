@@ -24,7 +24,7 @@ Fases entre parênteses.
 - [ ] Rodar tudo com Docker, publicar por CI/CD e monitorar (6)
 
 ## 4. Fora do escopo
-Open Finance, sincronização de cartões, app nativo Android/iOS, investimentos, previsões avançadas, notas fiscais complexas, microsserviços, Kubernetes. AWS e Terraform só a partir da Fase 6.
+Open Finance, sincronização automática de cartões (cartão lançado à mão faz parte do escopo), app nativo Android/iOS, investimentos, previsões avançadas, notas fiscais complexas, microsserviços, Kubernetes. AWS e Terraform só a partir da Fase 6.
 
 ## 5. Decisões técnicas
 Só o porquê. Detalhes em `docs/architecture/adr/`.
@@ -58,8 +58,8 @@ Cada fase termina com algo que eu consigo testar.
 | Fase | Entrega | Como testar | Status |
 |---|---|---|---|
 | 1 | Documentação, repositório e esqueleto do backend | `./mvnw -B verify` passa; PostgreSQL do Compose fica `healthy` | [x] concluída e aprovada em 07/11/2026 (`specs/SPEC-fase-1.md`) |
-| 2 | API financeira funcional (`specs/SPEC-fase-2.md`) | Migrações do zero; testes verdes contra o PostgreSQL local; isolamento entre usuários; Swagger no perfil dev | [ ] |
-| 3 | Frontend + dashboard (inclui os endpoints de resumo no backend) | Login, lançamento manual e dashboard no celular e no PC | [ ] |
+| 2 | API financeira funcional, com cartão e fatura (`specs/SPEC-fase-2.md`, `specs/SPEC-cartao-e-cashback.md`) | Migrações do zero; testes verdes contra o PostgreSQL local; isolamento entre usuários; Swagger no perfil dev | [ ] |
+| 3 | Frontend + dashboard (inclui os endpoints de resumo e o cashback do cartão no backend) | Login, lançamento manual e dashboard no celular e no PC | [ ] |
 | 4 | Lançamento por imagem com IA (inclui `Attachment`, `AIAnalysis` e `attachment_id`) | Print de Pix vira transação só após confirmação; extrato com várias linhas; duplicata sinalizada | [ ] |
 | 5 | Assistente financeiro, alertas de orçamento | Respostas batem com os números do backend | [ ] |
 | 6 | Docker completo, CI/CD, deploy, monitoramento, backup (modo tutor) | `docker compose up` sobe tudo; merge na `main` publica; restauração testada | [ ] |
@@ -68,6 +68,7 @@ Cada fase termina com algo que eu consigo testar.
 ### Specs por fase
 - Fase 1 (concluída e aprovada): `specs/SPEC-fase-1.md`
 - Fase 2 (próxima): `specs/SPEC-fase-2.md` (escopo, blocos, decisões, riscos e aceite)
+- Cartão, fatura, parcelas e cashback: `specs/SPEC-cartao-e-cashback.md` (D2 na Fase 2, D3 opcional, cashback no início da Fase 3)
 
 Cada spec de fase é escrita antes de a fase começar e fica como registro quando ela termina. Este arquivo mantém só o resumo geral.
 
@@ -98,3 +99,4 @@ Detalhados em `docs/requirements/03-requisitos-nao-funcionais.md`. Os do PLANO, 
 - 2026-11-07: Docker, Compose, Testcontainers e CI ficam fora da Fase 2 (semanas 7 a 10 do PLANO); a Fase 2 usa PostgreSQL 17 instalado no Windows, com os bancos `fintrack` e `fintrack_test`.
 - 2026-11-07: documento técnico aprovado; Fase 1 concluída e marcada no ROADMAP. Dúvidas do documento (API de IA, hospedagem, PDF, moeda) seguem em aberto para a Fase 4.
 - 2026-11-09: IA local por padrão (API opcional), imagens em disco privado, PDF fora do MVP, só BRL; ver `specs/SPEC-decisoes-fase-4.md`.
+- 2026-11-09: cartão de crédito e fatura entram na Fase 2 (Bloco D2, depois do D); parcelas (D3) opcionais após o E; cashback no início da Fase 3. Ver `specs/SPEC-cartao-e-cashback.md`.
