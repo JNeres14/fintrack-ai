@@ -15,7 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 @Configuration
 @Profile("test")
-class TestDatabaseConfig {
+public class TestDatabaseConfig {
 
 	@Bean
 	FlywayMigrationStrategy cleanThenMigrate(DataSource dataSource) {
@@ -32,7 +32,7 @@ class TestDatabaseConfig {
 		return new TestDatabaseCleaner(dataSource);
 	}
 
-	static class TestDatabaseCleaner {
+	public static class TestDatabaseCleaner {
 
 		private final DataSource dataSource;
 
