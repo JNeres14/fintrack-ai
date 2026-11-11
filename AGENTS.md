@@ -1,16 +1,15 @@
 # FinTrack AI
 ## Objetivo
-Gerenciador financeiro pessoal (web + PWA): o usuário envia imagens de comprovantes, a IA extrai as transações, o usuário revisa e confirma. Uso pessoal, arquitetura pronta para multiusuário.
+Gerenciador financeiro pessoal (web + PWA) com extração de comprovantes por IA; descrição completa no `CLAUDE.md`.
 ## Decisões
 - Escopo, fases e decisões: `SPEC.md` (fonte de verdade) e a spec da fase atual em `specs/` (Fase 2: `specs/SPEC-fase-2.md`). Requisitos detalhados: `docs/documento-tecnico.md` e `docs/`. Em dúvida, o documento vence; se achar que está errado, parar e perguntar.
 - Regras inegociáveis do domínio, estrutura e comandos: `CLAUDE.md` desta pasta.
 - Roteiro das fases: `prompts/prompt-fase-1.md`, `prompts/prompt-fase-2.md`.
 ## Regras
-- Ler STATUS.md antes de trabalhar e atualizá-lo ao final.
+- Atualizar o STATUS.md ao final (ele já é carregado pelo `CLAUDE.md`).
 - Ler SPEC.md, a spec da fase atual (`specs/SPEC-fase-N.md`) e ../../PLANO.md (objetivos e modo de trabalho) antes de escrever código.
 - Trabalhar uma fase por conversa e um bloco por vez, parando para minha revisão ao fim de cada bloco.
 - Modo aprendizado: em Dockerfile, Compose, CI/CD, Terraform e scripts, não escrever a solução; dar dicas, revisar e fazer perguntas. Em código de aplicação pode gerar, explicando as decisões principais e quais arquivos mudaram e por quê.
-- Não fazer commit nem push; o usuário revisa antes. No fim de cada bloco, listar os arquivos alterados e sugerir a mensagem de commit.
 - Mudou uma decisão ou o escopo: atualizar a SPEC.md (e criar ADR quando for decisão arquitetural).
 ## Ambiente e tecnologias
 Conferido na Fase 1 (07/11/2026). Reconferir com `java -version`, `psql --version` e `git --version` antes de começar uma fase; não digitar versão de memória.
@@ -22,7 +21,7 @@ Conferido na Fase 1 (07/11/2026). Reconferir com `java -version`, `psql --versio
 ## Tecnologias permitidas
 - Backend: Java, Spring Boot (Web MVC, Security, Data JPA, Validation, Actuator), Flyway, PostgreSQL, driver JDBC do PostgreSQL.
 - Testes (backend): JUnit 5, Mockito, Spring Boot Test, contra o PostgreSQL local (banco `fintrack_test`).
-- Fase 2, a confirmar com decisão registrada: biblioteca de JWT; springdoc-openapi apenas no perfil `dev`.
+- Fase 2: JWT pelo starter oauth2-resource-server (decidido, ADR-010); springdoc-openapi apenas no perfil `dev` (a confirmar com decisão registrada).
 - Frontend (Fase 3): React, TypeScript, Tailwind CSS, Vite PWA, Vitest.
 - Infra: nada na Fase 2. Docker/Compose (semanas 7 e 8), GitHub Actions (semanas 9 e 10), Prometheus e Grafana (Fase 6) entram quando o PLANO chegar lá.
 - IA (Fase 4): extração local por padrão (OCR com regras primeiro, modelo de visão local como plano B). A API multimodal é só opcional, desligada por padrão e ativada por configuração. Tudo atrás das interfaces `VisionExtractor` e `FinancialAdvisor`; ver `specs/SPEC-decisoes-fase-4.md`.
@@ -30,12 +29,9 @@ Conferido na Fase 1 (07/11/2026). Reconferir com `java -version`, `psql --versio
 - Microsserviços, Kubernetes, Kafka.
 - App nativo Android/iOS, Open Finance, sincronização de cartões, controle de investimentos.
 - AWS e Terraform antes da Fase 6.
-- Docker, Docker Compose, Testcontainers e CI na Fase 2 (semanas 7 a 10 do PLANO); os arquivos da Fase 1 ficam parados.
+- Docker, Compose, Testcontainers e CI na Fase 2 (os arquivos da Fase 1 ficam parados).
 - Lombok (DTOs como `record`).
-- `float`/`double` para valores monetários.
 - `ddl-auto` create/update ou qualquer alteração de schema fora de migração Flyway.
-- Expor entidades JPA na API.
-- Segredos, chaves de API ou dados bancários reais no repositório ou nos logs.
 - Semgrep, Trivy e Dependabot antes das semanas 9 e 10 do PLANO (Fase 2 não inclui).
 - Qualquer biblioteca, serviço pago ou ferramenta fora da lista de permitidas, sem minha aprovação.
 ## Regras de ambiente

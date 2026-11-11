@@ -10,10 +10,10 @@ Escopo e fases: `SPEC.md` e a spec da fase atual em `specs/` (Fase 2: `specs/SPE
 
 ## Stack
 
-- Backend: Java 25 + Spring Boot 4.1.2 (monólito modular), Spring Security, PostgreSQL 17, Flyway, Maven Wrapper
+- Backend: Java + Spring Boot (monólito modular), Spring Security, PostgreSQL, Flyway, Maven Wrapper (versões fixas em `AGENTS.md`)
 - Frontend: React + TypeScript + Tailwind + Vite PWA
 - Testes: JUnit + Mockito (backend), Vitest (frontend)
-- Infra: Docker/Docker Compose, GitHub Actions, Prometheus + Grafana (só depois da Fase 2: semanas 7 a 10 e Fase 6)
+- Infra: Docker/Compose, GitHub Actions, Prometheus + Grafana (fora da Fase 2; ver `AGENTS.md`)
 
 ## Estrutura
 
