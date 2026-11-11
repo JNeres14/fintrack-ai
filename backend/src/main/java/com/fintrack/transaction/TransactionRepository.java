@@ -39,10 +39,16 @@ public interface TransactionRepository
 			""")
 	List<AccountDelta> sumDeltaByAccount(@Param("userId") UUID userId);
 
+	/** Receitas menos despesas da conta entre duas datas (inclusive). Na fatura, o total é o oposto disto. */
 	@Query("""
 			select coalesce(sum(case when t.type = com.fintrack.shared.FlowType.INCOME then t.amount else -t.amount end), 0)
 			from Transaction t
 			where t.userId = :userId and t.accountId = :accountId
+			  and t.occurredOn >= :from and t.occurredOn <= :to
 			""")
-	BigDecimal sumDeltaForAccount(@Param("userId") UUID userId, @Param("accountId") UUID accountId);
+	BigDecimal sumDeltaForAccountBetween(@Param("userId") UUID userId, @Param("accountId") UUID accountId,
+			@Param("from") java.time.LocalDate from, @Param("to") java.time.LocalDate to);
+
+	List<Transaction> findAllByUserIdAndAccountIdAndOccurredOnBetween(UUID userId, UUID accountId,
+			java.time.LocalDate from, java.time.LocalDate to, org.springframework.data.domain.Sort sort);
 }

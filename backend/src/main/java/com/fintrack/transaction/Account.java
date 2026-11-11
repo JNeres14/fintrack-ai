@@ -28,6 +28,18 @@ public class Account extends AuditableEntity {
 	@Column(name = "initial_balance", nullable = false, precision = 14, scale = 2)
 	private BigDecimal initialBalance;
 
+	/** Só para cartão (CREDIT_CARD); nulos nos outros tipos. O banco garante isso (ck_accounts_card_fields). */
+	@Column(name = "credit_limit", precision = 14, scale = 2)
+	private BigDecimal creditLimit;
+
+	/** Dia de fechamento da fatura (1 a 28). */
+	@Column(name = "closing_day")
+	private Integer closingDay;
+
+	/** Dia de vencimento da fatura (1 a 28). */
+	@Column(name = "due_day")
+	private Integer dueDay;
+
 	protected Account() {
 	}
 
@@ -36,6 +48,28 @@ public class Account extends AuditableEntity {
 		this.name = name;
 		this.type = type;
 		this.initialBalance = initialBalance;
+	}
+
+	public boolean isCreditCard() {
+		return type == AccountType.CREDIT_CARD;
+	}
+
+	public BigDecimal getCreditLimit() {
+		return creditLimit;
+	}
+
+	public Integer getClosingDay() {
+		return closingDay;
+	}
+
+	public Integer getDueDay() {
+		return dueDay;
+	}
+
+	public void setCardData(BigDecimal creditLimit, Integer closingDay, Integer dueDay) {
+		this.creditLimit = creditLimit;
+		this.closingDay = closingDay;
+		this.dueDay = dueDay;
 	}
 
 	public UUID getUserId() {

@@ -39,14 +39,17 @@ public class TransactionService {
 	private final PaymentMethodRepository paymentMethods;
 	private final CategoryQueries categories;
 	private final Clock clock;
+	private final InvoiceGuard invoiceGuard;
 
 	TransactionService(TransactionRepository transactions, AccountRepository accounts,
-			PaymentMethodRepository paymentMethods, CategoryQueries categories, Clock clock) {
+			PaymentMethodRepository paymentMethods, CategoryQueries categories, Clock clock,
+			InvoiceGuard invoiceGuard) {
 		this.transactions = transactions;
 		this.accounts = accounts;
 		this.paymentMethods = paymentMethods;
 		this.categories = categories;
 		this.clock = clock;
+		this.invoiceGuard = invoiceGuard;
 	}
 
 	@Transactional(readOnly = true)
@@ -86,6 +89,7 @@ public class TransactionService {
 	@Transactional
 	TransactionResponse create(UUID userId, TransactionRequest req) {
 		validate(userId, req);
+		invoiceGuard.assertEditable(userId, req.accountId(), req.occurredOn());
 		Transaction t = new Transaction(userId, req.accountId(), req.categoryId(), req.paymentMethodId(), req.type(),
 				req.amount().setScale(2), req.occurredOn(), clean(req.merchant()), clean(req.description()));
 		return TransactionResponse.from(transactions.saveAndFlush(t));
@@ -94,7 +98,9 @@ public class TransactionService {
 	@Transactional
 	TransactionResponse update(UUID userId, UUID id, TransactionRequest req) {
 		Transaction t = find(userId, id);
+		invoiceGuard.assertEditable(userId, t.getAccountId(), t.getOccurredOn()); // fatura de origem
 		validate(userId, req);
+		invoiceGuard.assertEditable(userId, req.accountId(), req.occurredOn()); // fatura de destino
 		t.setAccountId(req.accountId());
 		t.setCategoryId(req.categoryId());
 		t.setPaymentMethodId(req.paymentMethodId());
@@ -108,7 +114,9 @@ public class TransactionService {
 
 	@Transactional
 	void delete(UUID userId, UUID id) {
-		transactions.delete(find(userId, id));
+		Transaction t = find(userId, id);
+		invoiceGuard.assertEditable(userId, t.getAccountId(), t.getOccurredOn());
+		transactions.delete(t);
 	}
 
 	/** Único ponto de busca por id: toda leitura, edição e exclusão passa por aqui, sempre filtrando pelo usuário. */

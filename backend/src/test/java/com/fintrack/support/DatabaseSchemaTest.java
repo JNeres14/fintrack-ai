@@ -47,11 +47,11 @@ class DatabaseSchemaTest {
 	@Test
 	void conectaNoBancoDeTesteEMigracaoV1Aplicada() {
 		TestDatabaseGuard.assertTestDatabase(dataSource);
-		assertThat(flyway.info().current().getVersion().getVersion()).isEqualTo("2");
+		assertThat(flyway.info().current().getVersion().getVersion()).isEqualTo("3");
 		List<String> tables = jdbc.queryForList(
 				"select table_name from information_schema.tables where table_schema = 'public'", String.class);
 		assertThat(tables).contains("users", "accounts", "categories", "payment_methods", "transactions",
-				"budgets", "refresh_tokens", "flyway_schema_history");
+				"budgets", "refresh_tokens", "invoice_payments", "flyway_schema_history");
 	}
 
 	@Test
