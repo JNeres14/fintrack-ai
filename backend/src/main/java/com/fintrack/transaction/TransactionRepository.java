@@ -6,11 +6,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 /** Toda consulta recebe o userId (vindo do token). Listagem com filtros e paginação entra no Bloco D. */
-public interface TransactionRepository extends JpaRepository<Transaction, UUID> {
+public interface TransactionRepository
+		extends JpaRepository<Transaction, UUID>, JpaSpecificationExecutor<Transaction> {
 
 	Optional<Transaction> findByIdAndUserId(UUID id, UUID userId);
 

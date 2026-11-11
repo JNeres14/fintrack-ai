@@ -13,6 +13,8 @@ public interface CategoryRepository extends JpaRepository<Category, UUID> {
 
 	List<Category> findAllByUserIdOrderByName(UUID userId);
 
+	List<Category> findAllByUserIdAndParentId(UUID userId, UUID parentId);
+
 	/** Nome único entre as categorias raiz do mesmo tipo (sem diferenciar maiúsculas). */
 	boolean existsByUserIdAndKindAndNameIgnoreCaseAndParentIdIsNull(UUID userId, FlowType kind, String name);
 
