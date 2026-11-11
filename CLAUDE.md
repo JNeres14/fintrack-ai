@@ -65,11 +65,15 @@ Módulos do backend: `auth, user, transaction, category, budget, goal, dashboard
 
 ## Comandos
 
-Verificados na Fase 1 (JDK 25 em `JAVA_HOME`; o Maven vem pelo wrapper):
+JDK 25 em `JAVA_HOME`; o Maven vem pelo wrapper. A partir de `backend/`:
 
 ```bash
-# Backend: build e testes (a partir de backend/)
-./mvnw -B verify
+# Build e testes (verificado na Fase 2: 153 testes contra o fintrack_test; precisa de DB_TEST_URL e do PostgreSQL local)
+./mvnw -B clean verify
+
+# Subir a API no perfil dev (banco fintrack; precisa de DB_URL e JWT_SECRET no .env). NÃO verificado pelo Code:
+# o Neres roda. Swagger UI em http://localhost:8080/swagger-ui.html (só no dev).
+./mvnw spring-boot:run
 
 # Banco: PostgreSQL 17 local (Windows), bancos fintrack e fintrack_test; conexão pelas variáveis do .env (Fase 2).
 # O Compose da Fase 1 fica em infrastructure/docker/, mas não é usado até as semanas 7 e 8 do PLANO.
