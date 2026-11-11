@@ -1,6 +1,9 @@
 package com.fintrack.transaction;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Clock;
+import java.util.Collection;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -55,6 +58,17 @@ public class TransactionService {
 	@Transactional(readOnly = true)
 	public boolean categoryInUse(UUID userId, UUID categoryId) {
 		return transactions.existsByUserIdAndCategoryId(userId, categoryId);
+	}
+
+	/**
+	 * Total de despesas no período (inclusive), pela data da compra. categoryIds nulo = todas as categorias.
+	 * Interface pública para o orçamento: o cálculo do consumo é do backend, no SQL.
+	 */
+	@Transactional(readOnly = true)
+	public BigDecimal expensesTotal(UUID userId, Collection<UUID> categoryIds, LocalDate from, LocalDate to) {
+		BigDecimal total = categoryIds == null ? transactions.sumExpenses(userId, from, to)
+				: categoryIds.isEmpty() ? BigDecimal.ZERO : transactions.sumExpensesByCategories(userId, categoryIds, from, to);
+		return total.setScale(2, RoundingMode.UNNECESSARY);
 	}
 
 	@Transactional(readOnly = true)

@@ -49,6 +49,24 @@ public interface TransactionRepository
 	BigDecimal sumDeltaForAccountBetween(@Param("userId") UUID userId, @Param("accountId") UUID accountId,
 			@Param("from") java.time.LocalDate from, @Param("to") java.time.LocalDate to);
 
+	/** Total de despesas entre duas datas (inclusive), de todas as categorias. Receitas não entram. */
+	@Query("""
+			select coalesce(sum(t.amount), 0) from Transaction t
+			where t.userId = :userId and t.type = com.fintrack.shared.FlowType.EXPENSE
+			  and t.occurredOn >= :from and t.occurredOn <= :to
+			""")
+	BigDecimal sumExpenses(@Param("userId") UUID userId, @Param("from") java.time.LocalDate from,
+			@Param("to") java.time.LocalDate to);
+
+	@Query("""
+			select coalesce(sum(t.amount), 0) from Transaction t
+			where t.userId = :userId and t.type = com.fintrack.shared.FlowType.EXPENSE
+			  and t.categoryId in :categoryIds and t.occurredOn >= :from and t.occurredOn <= :to
+			""")
+	BigDecimal sumExpensesByCategories(@Param("userId") UUID userId,
+			@Param("categoryIds") java.util.Collection<UUID> categoryIds, @Param("from") java.time.LocalDate from,
+			@Param("to") java.time.LocalDate to);
+
 	List<Transaction> findAllByUserIdAndAccountIdAndOccurredOnBetween(UUID userId, UUID accountId,
 			java.time.LocalDate from, java.time.LocalDate to, org.springframework.data.domain.Sort sort);
 }

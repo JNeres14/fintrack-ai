@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CategoryQueries {
 
 	/** Visão mínima da categoria: a entidade JPA não sai do módulo. */
-	public record CategoryRef(UUID id, FlowType kind, UUID parentId) {
+	public record CategoryRef(UUID id, String name, FlowType kind, UUID parentId) {
 	}
 
 	private final CategoryRepository categories;
@@ -26,7 +26,7 @@ public class CategoryQueries {
 	/** Vazio se a categoria não existe OU é de outro usuário. */
 	@Transactional(readOnly = true)
 	public Optional<CategoryRef> find(UUID userId, UUID id) {
-		return categories.findByIdAndUserId(id, userId).map(c -> new CategoryRef(c.getId(), c.getKind(), c.getParentId()));
+		return categories.findByIdAndUserId(id, userId).map(c -> new CategoryRef(c.getId(), c.getName(), c.getKind(), c.getParentId()));
 	}
 
 	/** O id dado mais os das suas subcategorias (um nível). Vazio se a categoria não é do usuário. */
