@@ -1,6 +1,6 @@
 # ADR-019: OpenAPI (springdoc) só no perfil dev
 
-Status: aprovada pelo Neres em 11/11/2026 e implementada no Bloco E (aguardando commit)
+Status: aceita (aprovada pelo Neres em 11/11/2026; implementada na Fase 2)
 
 ## Decisão
 - springdoc-openapi-starter-webmvc-ui 3.2.0 (o pom dele usa Spring Boot 4.1.2 como base; verificado em execução pelos testes).

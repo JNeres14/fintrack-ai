@@ -1,6 +1,6 @@
 # ADR-016: Cartão de crédito e fatura
 
-Status: aprovada pelo Neres em 11/11/2026 e implementada no Bloco D2 (aguardando commit)
+Status: aceita (aprovada pelo Neres em 11/11/2026; implementada na Fase 2)
 Base: `specs/SPEC-cartao-e-cashback.md` (seção 2). Onde este ADR for mais específico, ele detalha a spec; onde divergir, vale a spec.
 
 ## Contexto

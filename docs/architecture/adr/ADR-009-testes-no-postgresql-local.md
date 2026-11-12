@@ -1,6 +1,6 @@
 # ADR-009: Testes de banco no PostgreSQL local, com trava
 
-Status: proposta (Fase 2, Bloco A, 07/11/2026), aguardando aprovação
+Status: aceita (proposta em 07/11/2026; aceita no fechamento da Fase 2, 11/11/2026)
 
 ## Contexto
 A Fase 2 não usa Docker nem Testcontainers (semanas 7 a 10 do PLANO). Os testes precisam de um PostgreSQL real, e a Fase 1 os rodava sem banco (autoconfiguração excluída). Testes que limpam o schema, apontados por engano para o banco `fintrack`, apagariam os dados de desenvolvimento.

@@ -1,6 +1,6 @@
 # ADR-010: JWT com o suporte do Spring Security (Nimbus), HS256 e segredo só em variável de ambiente
 
-Status: proposta (Fase 2, Bloco B, 09/11/2026), aprovada no chat; aguardando commit
+Status: aceita (proposta em 09/11/2026; aceita no fechamento da Fase 2, 11/11/2026)
 
 ## Contexto
 A API precisa de token de acesso curto (RNF-02, máx. 15 min). Spring Boot 4.1.2 e Java 25.

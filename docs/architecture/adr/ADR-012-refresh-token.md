@@ -1,6 +1,6 @@
 # ADR-012: Refresh token opaco com rotação e detecção de reuso
 
-Status: proposta (Fase 2, Bloco B, 09/11/2026), aprovada no chat; aguardando commit
+Status: aceita (proposta em 09/11/2026; aceita no fechamento da Fase 2, 11/11/2026)
 
 ## Decisão
 - Valor: 256 bits aleatórios (`SecureRandom`), opaco (não é JWT), válido por 7 dias.

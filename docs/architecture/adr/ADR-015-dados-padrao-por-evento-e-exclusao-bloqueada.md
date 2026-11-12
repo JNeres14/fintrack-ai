@@ -1,6 +1,6 @@
 # ADR-015: Dados padrão por evento, exclusão bloqueada e saldo calculado
 
-Status: proposta (Fase 2, Bloco C, 09/11/2026), aprovada no chat; aguardando commit
+Status: aceita (proposta em 09/11/2026; aceita no fechamento da Fase 2, 11/11/2026)
 
 ## Decisão
 - **Dados padrão:** `UserService.create` publica `UserRegistered`; os módulos `category` e `transaction` ouvem (síncrono, mesma transação do cadastro) e criam as categorias (9 de despesa com 6 subcategorias, 3 de receita), as formas de pagamento (Pix, Débito, Crédito, Dinheiro) e uma conta "Carteira" (toda transação exige conta). Se algo falhar, o cadastro desfaz. O módulo `auth` não conhece esses módulos.

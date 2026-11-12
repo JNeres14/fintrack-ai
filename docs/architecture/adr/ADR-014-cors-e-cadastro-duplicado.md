@@ -1,6 +1,6 @@
 # ADR-014: CORS restrito por configuração e cadastro com e-mail repetido
 
-Status: proposta (Fase 2, Bloco B, 09/11/2026), aprovada no chat; aguardando commit
+Status: aceita (proposta em 09/11/2026; aceita no fechamento da Fase 2, 11/11/2026)
 
 ## Decisão
 - CORS: origens em `CORS_ALLOWED_ORIGINS` (lista separada por vírgula). Vazio = nenhuma origem; curinga `*` faz a aplicação não subir. Sem cookies (`allowCredentials=false`): o token vai no cabeçalho `Authorization`, e CSRF fica desligado, com sessão STATELESS.

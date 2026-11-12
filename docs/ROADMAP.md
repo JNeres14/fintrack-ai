@@ -7,8 +7,8 @@ Sete fases em sequência, com total estimado de 8 a 12 semanas (algumas horas po
 - [x] Aceite: documento aprovado (07/11/2026); README e ADRs iniciais; telas principais listadas
 
 ## Fase 2 · Backend e banco
-- [ ] Escopo: Spring Boot, PostgreSQL + Flyway, entidades, API REST, autenticação e autorização, testes
-- [ ] Aceite: migrações rodam do zero; CRUD de transações pela API; teste de isolamento entre usuários passa; suíte verde localmente (CI fica para as semanas 9 e 10 do PLANO)
+- [x] Escopo: Spring Boot, PostgreSQL + Flyway, entidades, API REST, autenticação e autorização, testes
+- [x] Aceite: migrações rodam do zero; CRUD de transações pela API; teste de isolamento entre usuários passa; suíte verde localmente (CI fica para as semanas 9 e 10 do PLANO). Concluída em 11/11/2026: 164 testes, 0 falhas; inclui cartão/fatura (D2) e orçamentos (E); parcelas, cashback e ajustes de API ficam na Fase 3.
 
 ## Fase 3 · Frontend e dashboard
 - [ ] Escopo: React + TypeScript, interface responsiva, dashboard, histórico, filtros, integração

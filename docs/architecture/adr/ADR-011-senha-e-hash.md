@@ -1,6 +1,6 @@
 # ADR-011: Política de senha e hash BCrypt
 
-Status: proposta (Fase 2, Bloco B, 09/11/2026), aprovada no chat; aguardando commit
+Status: aceita (proposta em 09/11/2026; aceita no fechamento da Fase 2, 11/11/2026)
 
 ## Decisão
 - Senha: mínimo 12 caracteres; máximo 72 bytes (o BCrypt ignora o que passa disso, então recusamos em vez de truncar); sem exigir símbolos; recusa igual ao e-mail e uma lista pequena de senhas comuns. Comprimento vale mais que complexidade.
