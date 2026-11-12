@@ -25,6 +25,7 @@ Conferido na Fase 1 (07/11/2026). Reconferir com `java -version`, `psql --versio
 - Frontend (Fase 3): React, TypeScript, Tailwind CSS, Vite PWA, Vitest.
 - Infra: nada na Fase 2. Docker/Compose (semanas 7 e 8), GitHub Actions (semanas 9 e 10), Prometheus e Grafana (Fase 6) entram quando o PLANO chegar lá.
 - IA (Fase 4): extração local por padrão (OCR com regras primeiro, modelo de visão local como plano B). A API multimodal é só opcional, desligada por padrão e ativada por configuração. Tudo atrás das interfaces `VisionExtractor` e `FinancialAdvisor`; ver `specs/SPEC-decisoes-fase-4.md`.
+- Decisão de 11/11 (Fase 4 e hospedagem): imagem do print é apagada ao confirmar o rascunho; backend e banco ficam no PC com Tailscale; ver `specs/SPEC-decisoes-rodada-2026-11-11.md`.
 ## Tecnologias proibidas / fora do escopo
 - Microsserviços, Kubernetes, Kafka.
 - App nativo Android/iOS, Open Finance, sincronização de cartões, controle de investimentos.

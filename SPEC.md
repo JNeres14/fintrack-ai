@@ -100,3 +100,6 @@ Detalhados em `docs/requirements/03-requisitos-nao-funcionais.md`. Os do PLANO, 
 - 2026-11-07: documento técnico aprovado; Fase 1 concluída e marcada no ROADMAP. Dúvidas do documento (API de IA, hospedagem, PDF, moeda) seguem em aberto para a Fase 4.
 - 2026-11-09: IA local por padrão (API opcional), imagens em disco privado, PDF fora do MVP, só BRL; ver `specs/SPEC-decisoes-fase-4.md`.
 - 2026-11-09: cartão de crédito e fatura entram na Fase 2 (Bloco D2, depois do D); parcelas (D3) opcionais após o E; cashback no início da Fase 3. Ver `specs/SPEC-cartao-e-cashback.md`.
+- 2026-11-11: ajustes de API do cartão (separar /api/cards de /api/accounts, mensagens de erro de JSON e de `type` inválido) adiados para o início da Fase 3. Ver `specs/SPEC-cartao-e-cashback.md`, seção 6.
+- 2026-11-11: rodada de decisões das Fases 3, 4 e 6 (parcelas D3 e cashback no início da Fase 3, dashboard inicial, HTTPS via Tailscale, senha por comando local, regras da extração por print, lembrete por Telegram nas semanas 9–10). Ver `specs/SPEC-decisoes-rodada-2026-11-11.md`.
+- 2026-11-11: hospedagem fica no PC com Tailscale; nenhuma nuvem gratuita atendeu (Render, Fly.io, Railway, AWS, Oracle e Neon/Supabase avaliados). Reavaliar na Fase 6 com ADR.

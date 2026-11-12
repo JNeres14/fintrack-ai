@@ -58,3 +58,11 @@ Meu caso: um cartão, 0,8% nas compras normais e 5% nas assinaturas (hoje Netfli
 
 ## 5. Verificação
 Mesmo padrão dos blocos anteriores: `./mvnw -B clean verify` contra o `fintrack_test`. Testes de fechamento no dia exato e no dia seguinte, virada de ano, soma das parcelas igual ao total, limite com parcelas futuras, pagamento parcial e acesso cruzado em todo endpoint novo.
+
+## 6. Ajustes de API adiados para o início da Fase 3
+Achados no teste manual do Swagger em 11/11/2026. Decisão: ficam para o início da Fase 3, junto com a aba do cartão.
+- **Separar cartão de conta na API:** `POST/PUT/DELETE` e `GET /{id}` em `/api/cards`, com corpo só `name`, `creditLimit`, `closingDay` e `dueDay` (tipo `CREDIT_CARD` implícito). `/api/accounts` aceita só `WALLET`, `CHECKING`, `SAVINGS` e `OTHER`; `CREDIT_CARD` ali responde 400 apontando para `/api/cards`. Sem migração nova. Avaliar também mover as rotas de fatura e pagamento para `/api/cards/{id}/invoices/...`.
+- **Respostas de conta sem campos de cartão:** a resposta de conta comum não traz `creditLimit`, `closingDay` e `dueDay` (hoje vêm `null`).
+- **Erro de JSON ilegível:** hoje responde só "Failed to read request"; deve apontar o campo com problema.
+- **`type` inválido:** a resposta deve listar os valores aceitos.
+- **Documentação:** atualizar `docs/api/README.md` e o ADR-016 junto com a mudança.
