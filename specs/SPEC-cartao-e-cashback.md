@@ -46,13 +46,13 @@ Fora do MVP: juros, multa, rotativo, antecipação ou quitação de parcelas.
 - ADR 017.
 
 ## 4. Cashback (início da Fase 3)
-Meu caso: um cartão, 0,8% nas compras normais e 5% nas assinaturas (hoje Netflix e Spotify), sem teto mensal, creditado em conta ou Pix.
+Caso de referência (exemplo): um cartão com 0,8% de cashback nas compras normais e 5% nas assinaturas de streaming, sem teto mensal, creditado em conta ou Pix.
 - **Regras por cartão:** percentual padrão e regras por categoria (5% em "Assinaturas"), com percentual guardado como `NUMERIC`.
 - **Quando conta:** o cashback cai no dia da compra, então a estimativa é por mês da data da compra, sem depender da fatura.
 - **Arredondamento:** cada compra, meio para cima, em duas casas; a soma é o total. Se a comparação mostrar diferença com o banco, ajustar.
 - **Estimativa:** calculada no backend por mês e por cartão.
 - **Recebido:** registro próprio (`cashback_receipts`) com cartão, conta de destino, data e valor. Aumenta o saldo da conta de destino e fica fora de gastos e renda.
-- **Comparação:** estimado, recebido e diferença por mês; com dois ou três meses de dados, calibro as regras.
+- **Comparação:** estimado, recebido e diferença por mês; com dois ou três meses de dados, as regras são calibradas.
 - **Parcelas:** cada parcela conta como uma compra, na data dela.
 - Cada endpoint novo tem teste de acesso cruzado. ADR próprio na Fase 3.
 

@@ -1,6 +1,6 @@
 # ADR-018: Orçamentos mensais
 
-Status: aceita (aprovada pelo Neres em 11/11/2026; implementada na Fase 2)
+Status: aceita (aprovada pelo autor em 11/11/2026; implementada na Fase 2)
 
 ## Decisão
 - `/api/budgets` (criar, buscar, listar por `?month=AAAA-MM`, editar só o limite, excluir). Geral (sem categoria) ou por categoria de despesa (receita = 400). Um por usuário, mês e categoria (409).

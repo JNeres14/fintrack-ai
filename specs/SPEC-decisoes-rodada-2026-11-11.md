@@ -14,7 +14,7 @@
 ## 2. Lembrete semanal para enviar o print
 - **Canal:** bot do Telegram. A mensagem é genérica ("hora de enviar o print"), sem valores nem estabelecimentos.
 - **Como dispara:** agendador (cron semanal) do GitHub Actions, que roda na nuvem e **não depende do notebook ligado**. Token do bot e identificador do chat ficam nos segredos do repositório, nunca no código.
-- **Quando fazer:** semanas 9 e 10 do `PLANO.md`, junto com o estudo de GitHub Actions, em modo tutor (eu escrevo; o Claude dá dicas e revisa). Até lá, o lembrete recorrente do iPhone é opcional.
+- **Quando fazer:** semanas 9 e 10 do `PLANO.md`, junto com o estudo de GitHub Actions, em modo tutor (o autor escreve; o Claude dá dicas e revisa). Até lá, o lembrete recorrente do iPhone é opcional.
 - **Cuidados:** o horário pode atrasar alguns minutos; o GitHub desativa agendamentos de repositório parado por 60 dias. Mudar a frequência é mudar o cron.
 
 ## 3. Fase 3
@@ -22,11 +22,11 @@
 - **Cashback:** início da Fase 3 (`SPEC-cartao-e-cashback.md`, seção 4).
 - **Ajustes de API do cartão:** início da Fase 3 (`SPEC-cartao-e-cashback.md`, seção 6).
 - **Dashboard, primeira tela:** saldo e totais do mês, com comparação com o mês anterior. Gastos por categoria, orçamentos e cartão com cashback ficam fora da primeira tela, em telas ou abas próprias (a aba de cartão continua prevista).
-- **HTTPS no iPhone:** HTTPS do Tailscale (grátis, sem instalar certificado, e já serve para uso fora de casa na Fase 6). Registrar em ADR na Fase 3. Enquanto isso, o envio pela galeria funciona sem HTTPS.
+- **HTTPS no celular:** HTTPS do Tailscale (grátis, sem instalar certificado, e já serve para uso fora de casa na Fase 6). Registrar em ADR na Fase 3. Enquanto isso, o envio pela galeria funciona sem HTTPS.
 - **Senha esquecida:** comando local de redefinição, pelo terminal, feito por mim como dono do banco. Sem fluxo por e-mail e sem tela. É uma tarefa pequena depois de fechar a Fase 2.
 
 ## 4. Hospedagem (Fase 6)
-- **Decisão (11/11/2026):** o backend e o banco ficam no **meu PC, com acesso por Tailscale**. Pesquisei os planos gratuitos e nenhum atende (Spring Boot sempre ligado + PostgreSQL + grátis + confiável + dados financeiros): Render dorme após 15 min e o Postgres grátis expira em 30 dias; Fly.io não tem plano grátis para contas novas; Railway tem só US$ 1/mês de crédito; AWS novo plano grátis fecha a conta em até 6 meses; Oracle Always Free reduziu o ARM para 2 OCPU/12 GB em 15/06/2026, sem aviso público e com regras de cobrança ambíguas; Neon/Supabase servem só para o banco e pausam por inatividade.
+- **Decisão (11/11/2026):** o backend e o banco ficam no **PC do desenvolvedor, com acesso por Tailscale**. Foram pesquisados os planos gratuitos e nenhum atende (Spring Boot sempre ligado + PostgreSQL + grátis + confiável + dados financeiros): Render dorme após 15 min e o Postgres grátis expira em 30 dias; Fly.io não tem plano grátis para contas novas; Railway tem só US$ 1/mês de crédito; AWS novo plano grátis fecha a conta em até 6 meses; Oracle Always Free reduziu o ARM para 2 OCPU/12 GB em 15/06/2026, sem aviso público e com regras de cobrança ambíguas; Neon/Supabase servem só para o banco e pausam por inatividade.
 - **Conflito resolvido:** extração local (OCR/modelo de visão) exige o PC de qualquer forma, o que reforça a decisão.
 - **Reavaliar:** na Fase 6, só se surgir necessidade (ex.: PC desligado com frequência). Nesse caso, estudar Oracle Always Free como laboratório de AWS/Linux, com backup semanal (pg_dump). Registrar em ADR na Fase 6.
 

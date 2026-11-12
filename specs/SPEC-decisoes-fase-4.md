@@ -6,14 +6,14 @@ Data: 2026-11-09. Status: decisões aprovadas em conversa (rodadas de perguntas 
 - Uso meus comprovantes reais, então privacidade é requisito.
 - Custo alvo: R$ 0 (só gratuito ou local).
 - Prints e fotos são o formato dominante dos comprovantes.
-- Preciso usar o app pelo celular (iPhone), além do PC.
+- O app deve ser usado pelo celular, além do PC.
 - Hardware do PC (notebook): Intel i5-13420H (8 núcleos), 16 GB de RAM, NVIDIA RTX 3050 Laptop com 6 GB de VRAM dedicada.
 
 ## 2. Decisões
 
 ### 2.1 Extração por IA: local por padrão
 - `VisionExtractor` continua sendo a interface (ADR-006).
-- Implementação padrão: extração na minha máquina, sem enviar imagem para fora.
+- Implementação padrão: extração na máquina do usuário, sem enviar imagem para fora.
 - Implementação por API: opcional, **desligada por padrão**, ativada por configuração, só depois de ler a política de dados do provedor.
 - Testes automatizados usam a implementação fake.
 - Primeira tentativa: OCR clássico com regras (leve, roda em qualquer máquina).
@@ -44,7 +44,7 @@ Data: 2026-11-09. Status: decisões aprovadas em conversa (rodadas de perguntas 
 ### 2.6 Celular
 - No MVP o celular funciona só em casa, no mesmo Wi-Fi do PC. Fora de casa entra na Fase 6, por túnel gratuito até o PC (por exemplo Tailscale), sem mover o backend para a nuvem, para a extração continuar local e o custo R$ 0.
 - HTTPS: o navegador só libera câmera e instalação do PWA em conexão segura, e o endereço da rede local não conta. Tratar na Fase 3 com certificado local de desenvolvimento (por exemplo mkcert instalado no iPhone) ou o HTTPS gratuito do Tailscale, registrando em ADR. Enquanto isso, upload por seleção de arquivo da galeria funciona sem HTTPS.
-- Fotos do iPhone saem em HEIC. O campo de upload do PWA pede `image/*` para o navegador converter para JPEG; testar com foto real no início da Fase 3. Se a conversão falhar, ela vira tarefa própria da Fase 4.
+- Fotos de iPhone saem em HEIC. O campo de upload do PWA pede `image/*` para o navegador converter para JPEG; testar com foto real no início da Fase 3. Se a conversão falhar, ela vira tarefa própria da Fase 4.
 
 ## 3. Riscos
 - Qualidade do OCR/modelo local pode ficar abaixo do necessário; mitigação: medição inicial e planos B e C.

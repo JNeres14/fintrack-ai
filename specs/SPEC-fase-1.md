@@ -34,7 +34,7 @@ Deixar o repositório estruturado, documentado e pronto para a Fase 2, com tudo 
 | Versão do Spring Boot | 4.1.2 | O gerador do start.spring.io produziu `4.1.2.RELEASE`, que não existe no Maven Central; corrigido para `4.1.2` |
 | Build | Maven Wrapper dentro de `backend/` | Maven não estava instalado |
 | DTOs | `record`, sem Lombok | Decisão do Code; mantida |
-| Identidade Git | Local ao repositório: "Jose Neres" | Sem identidade global configurada |
+| Identidade Git | Local ao repositório | Sem identidade global configurada |
 | `.env` local | Existe com senha aleatória descartável, no `.gitignore` | Necessário para testar o Compose |
 | `.gitkeep` | Restam em `infrastructure/docker` e `.github/workflows` | A remoção foi bloqueada por falso positivo da verificação de segurança; são inofensivos |
 | Compose e CI | Escritos pelo Code | Anterior à regra de modo tutor; são ponto de partida e serão reescritos por mim na Fase 6 |
@@ -50,6 +50,6 @@ Deixar o repositório estruturado, documentado e pronto para a Fase 2, com tudo 
 
 ## 7. Antes do primeiro push ao GitHub
 Checagens feitas em 07/11/2026 no histórico local: nenhum remoto configurado, o `.env` nunca foi versionado e está protegido pelo `.gitignore`, e não há chaves ou tokens reais no histórico. Repetir a checagem se o histórico mudar antes do push.
-- Criar o repositório no GitHub e conferir o e-mail de autoria dos commits (`joseneres14@gmail.com`).
+- Criar o repositório no GitHub e conferir o e-mail de autoria dos commits.
 - Conferir que `.env` continua fora do Git e que o `.env.example` não tem valores reais.
 - Depois do push, conferir o primeiro resultado do workflow `Backend CI` (ainda não validado).

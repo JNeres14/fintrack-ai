@@ -1,6 +1,6 @@
 # ADR-016: Cartão de crédito e fatura
 
-Status: aceita (aprovada pelo Neres em 11/11/2026; implementada na Fase 2)
+Status: aceita (aprovada pelo autor em 11/11/2026; implementada na Fase 2)
 Base: `specs/SPEC-cartao-e-cashback.md` (seção 2). Onde este ADR for mais específico, ele detalha a spec; onde divergir, vale a spec.
 
 ## Contexto
@@ -11,7 +11,7 @@ Boa parte dos gastos do usuário é no cartão de crédito. Hoje o cartão é s�
 ### 1. Dados do cartão
 - A conta `CREDIT_CARD` ganha `credit_limit` (`NUMERIC(14,2)`), `closing_day` e `due_day` (1 a 28). Os três são obrigatórios para cartão e **proibidos** nos outros tipos (`CHECK` no banco e validação na API). Cada cartão é uma conta, então vários cartões já cabem.
 - Migração V3 (sem editar V1 nem V2). O saldo inicial do cartão é a dívida já existente (negativo).
-- **Migração e dados já existentes:** como o `CHECK` exige os três campos para cartão, a V3 converte qualquer conta `CREDIT_CARD` já existente em um banco de desenvolvimento para `OTHER` (não invento limite nem dias). O banco de teste é refeito do zero. **Pergunta ao Neres:** existe conta de cartão no seu banco `fintrack`? Se existir, avise antes de aplicar.
+- **Migração e dados já existentes:** como o `CHECK` exige os três campos para cartão, a V3 converte qualquer conta `CREDIT_CARD` já existente em um banco de desenvolvimento para `OTHER` (não invento limite nem dias). O banco de teste é refeito do zero. **Pergunta ao autor:** existe conta de cartão no seu banco `fintrack`? Se existir, avise antes de aplicar.
 - Alterações no cartão: mudar `closing_day` é **bloqueado (409)** se o cartão já tem algum pagamento de fatura (reclassificaria compras entre faturas, inclusive pagas). Mudar `due_day` e o limite é sempre permitido. Mudar o tipo de `CREDIT_CARD` para outro, ou o contrário, é bloqueado se a conta já tem transações ou pagamentos.
 
 ### 2. Nome da fatura (`AAAA-MM`) e datas

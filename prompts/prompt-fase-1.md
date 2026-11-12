@@ -46,4 +46,4 @@ Ao terminar, me diga o que foi feito, o que não pôde ser verificado e as dúvi
 
 - Exporte o documento técnico do Claude como Markdown e salve em `docs/` (por exemplo `docs/documento-tecnico.md`).
 - Java 21 e Maven são suposições minhas; se você usa outra versão ou prefere Gradle, troque no item 6.
-- Confirme se Docker está instalado na sua máquina (Windows 11: Docker Desktop com WSL2) para o item 7.
+- Confirme se Docker está instalado na máquina de desenvolvimento para o item 7.

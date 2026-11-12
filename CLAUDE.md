@@ -72,7 +72,7 @@ JDK 25 em `JAVA_HOME`; o Maven vem pelo wrapper. A partir de `backend/`:
 ./mvnw -B clean verify
 
 # Subir a API no perfil dev (banco fintrack; precisa de DB_URL e JWT_SECRET no .env). NÃO verificado pelo Code:
-# o Neres roda. Swagger UI em http://localhost:8080/swagger-ui.html (só no dev).
+# o desenvolvedor roda. Swagger UI em http://localhost:8080/swagger-ui.html (só no dev).
 ./mvnw spring-boot:run
 
 # Banco: PostgreSQL 17 local (Windows), bancos fintrack e fintrack_test; conexão pelas variáveis do .env (Fase 2).
